@@ -4,15 +4,18 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { waxData } from '@/lib/wax-data'
-import { useCart } from '@/lib/cart-context'
 
 export default function WaxPage() {
   const [selectedType, setSelectedType] = useState<'all' | 'Vela' | 'Difusor' | 'Wax Melt'>('all')
-  const { addToCart } = useCart()
 
   const filteredWax = selectedType === 'all' 
     ? waxData 
     : waxData.filter(w => w.type === selectedType)
+
+  const handleBuyNow = (wax: typeof waxData[0]) => {
+    const message = `Hola! Estoy interesado en comprar:%0A%0A${wax.name}%0AAroma: ${wax.scent}%0ADuración: ${wax.duration}%0APrecio: $${wax.price}%0A%0A¿Está disponible?`
+    window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
@@ -79,17 +82,9 @@ export default function WaxPage() {
                 <p className="text-xl font-bold text-primary mb-3">${wax.price}</p>
                 <Button 
                   className="w-full"
-                  onClick={() => {
-                    addToCart({
-                      id: wax.id,
-                      name: wax.name,
-                      price: wax.price,
-                      image: wax.image,
-                      quantity: 1
-                    })
-                  }}
+                  onClick={() => handleBuyNow(wax)}
                 >
-                  Agregar al Carrito
+                  Comprar
                 </Button>
               </div>
             </Card>

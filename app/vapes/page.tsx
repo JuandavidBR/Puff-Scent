@@ -4,11 +4,9 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { vapesData } from '@/lib/vapes-data'
-import { useCart } from '@/lib/cart-context'
 
 export default function VapesPage() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'Mini' | 'Pro' | 'Max' | 'Ultra'>('all')
-  const { addToCart } = useCart()
 
   const filteredVapes = selectedCategory === 'all' 
     ? vapesData 
@@ -28,6 +26,11 @@ export default function VapesPage() {
       
       setTimeout(() => particle.remove(), 3000)
     }
+  }
+
+  const handleBuyNow = (vape: typeof vapesData[0]) => {
+    const message = `Hola! Estoy interesado en comprar:%0A%0A${vape.name}%0ASabor: ${vape.flavor}%0APuffs: ${vape.puffs}%0APrecio: $${vape.price}%0A%0A¿Está disponible?`
+    window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
 
   return (
@@ -132,16 +135,10 @@ export default function VapesPage() {
                   className="w-full"
                   onClick={(e) => {
                     e.stopPropagation()
-                    addToCart({
-                      id: vape.id,
-                      name: vape.name,
-                      price: vape.price,
-                      image: vape.image,
-                      quantity: 1
-                    })
+                    handleBuyNow(vape)
                   }}
                 >
-                  Agregar al Carrito
+                  Comprar
                 </Button>
               </div>
             </Card>

@@ -4,12 +4,9 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { perfumesData } from '@/lib/perfumes-data'
-import Link from 'next/link'
-import { useCart } from '@/lib/cart-context'
 
 export default function PerfumesPage() {
   const [selectedGender, setSelectedGender] = useState<'all' | 'Hombre' | 'Mujer' | 'Unisex'>('all')
-  const { addToCart } = useCart()
 
   const filteredPerfumes = selectedGender === 'all' 
     ? perfumesData 
@@ -46,6 +43,11 @@ export default function PerfumesPage() {
         img.style.transform = 'rotate(0deg) scale(1)'
       }, 500)
     }
+  }
+
+  const handleBuyNow = (perfume: typeof perfumesData[0]) => {
+    const message = `Hola! Estoy interesado en comprar:%0A%0A${perfume.brand} - ${perfume.name}%0APrecio: $${perfume.price}%0A%0A¿Está disponible?`
+    window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
 
   return (
@@ -126,16 +128,10 @@ export default function PerfumesPage() {
                   className="w-full"
                   onClick={(e) => {
                     e.stopPropagation()
-                    addToCart({
-                      id: perfume.id,
-                      name: `${perfume.brand} - ${perfume.name}`,
-                      price: perfume.price,
-                      image: perfume.image,
-                      quantity: 1
-                    })
+                    handleBuyNow(perfume)
                   }}
                 >
-                  Agregar al Carrito
+                  Comprar
                 </Button>
               </div>
             </Card>
