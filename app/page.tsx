@@ -1,9 +1,10 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { ShoppingBag, Menu } from 'lucide-react'
+import { Menu, Instagram } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { CartIcon } from '@/components/cart-icon'
 
 export default function PerfumeLandingPage() {
   const [sprayingId, setSprayingId] = useState<number | null>(null)
@@ -16,38 +17,54 @@ export default function PerfumeLandingPage() {
     setTimeout(() => setRotatingId(null), 600)
   }
 
+  const handleReservarCita = () => {
+    window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
+  }
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="w-1 h-8 bg-foreground" />
             <h1 className="font-serif text-xl tracking-tight text-foreground">
               PUFFSCENT
             </h1>
-          </div>
+          </Link>
           
           <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
-            <a href="#shop" className="text-foreground hover:text-accent transition-colors uppercase">
-              Tienda
-            </a>
-            <a href="#collections" className="text-foreground hover:text-accent transition-colors uppercase">
-              Colecciones
-            </a>
+            <Link href="/perfumes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Perfumes
+            </Link>
+            <Link href="/vapes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Vapes
+            </Link>
+            <Link href="/wax" className="text-foreground hover:text-accent transition-colors uppercase">
+              Wax
+            </Link>
             <Link href="/nosotros" className="text-foreground hover:text-accent transition-colors uppercase">
               Nosotros
             </Link>
           </nav>
 
           <div className="flex items-center gap-4">
-            <button className="text-foreground hover:text-accent transition-colors">
-              <ShoppingBag className="w-5 h-5" />
-            </button>
+            <a 
+              href="https://www.instagram.com/puffscent" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-accent transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <CartIcon />
             <button className="md:hidden text-foreground">
               <Menu className="w-5 h-5" />
             </button>
-            <Button className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button 
+              onClick={handleReservarCita}
+              className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90"
+            >
               Reservar Cita
             </Button>
           </div>
@@ -63,15 +80,19 @@ export default function PerfumeLandingPage() {
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12 text-pretty">
               Transforma cada momento en una experiencia sensorial única con nuestras fragancias exclusivas, 
-              cuidadosamente seleccionadas para revelar tu esencia más auténtica.
+              vapes premium y productos aromáticos.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm tracking-wider uppercase px-8">
-                Descubrir Colección
-              </Button>
-              <Button size="lg" variant="outline" className="text-sm tracking-wider uppercase px-8 border-2">
-                Explorar Fragancias
-              </Button>
+              <Link href="/perfumes">
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm tracking-wider uppercase px-8">
+                  Descubrir Colección
+                </Button>
+              </Link>
+              <Link href="/vapes">
+                <Button size="lg" variant="outline" className="text-sm tracking-wider uppercase px-8 border-2">
+                  Explorar Vapes
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -90,7 +111,7 @@ export default function PerfumeLandingPage() {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <p className="text-sm tracking-widest uppercase text-muted-foreground mb-4">(Colecciones)</p>
+              <p className="text-sm tracking-widest uppercase text-muted-foreground mb-4">Colecciones</p>
               <h3 className="font-serif text-5xl md:text-6xl text-foreground text-balance">
                 Nuestras fragancias exclusivas
               </h3>
@@ -244,9 +265,11 @@ export default function PerfumeLandingPage() {
                 del mundo. Desde las rosas búlgaras hasta el oud de Asia, seleccionamos cuidadosamente cada 
                 esencia para crear perfumes inolvidables.
               </p>
-              <Button variant="outline" className="border-2">
-                Conoce Nuestro Proceso
-              </Button>
+              <Link href="/nosotros">
+                <Button variant="outline" className="border-2">
+                  Conoce Nuestro Proceso
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -296,20 +319,18 @@ export default function PerfumeLandingPage() {
             <div>
               <h5 className="text-sm font-medium uppercase tracking-wider mb-4 text-foreground">Tienda</h5>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">Fragancias</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Colecciones</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Nuevos Lanzamientos</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Ediciones Limitadas</a></li>
+                <li><Link href="/perfumes" className="hover:text-foreground transition-colors">Fragancias</Link></li>
+                <li><Link href="/vapes" className="hover:text-foreground transition-colors">Vapes</Link></li>
+                <li><Link href="/wax" className="hover:text-foreground transition-colors">Wax Aromático</Link></li>
               </ul>
             </div>
             
             <div>
               <h5 className="text-sm font-medium uppercase tracking-wider mb-4 text-foreground">Contacto</h5>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-colors">Reservar Cita</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Atención al Cliente</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Ubicaciones</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Preguntas Frecuentes</a></li>
+                <li><button onClick={handleReservarCita} className="hover:text-foreground transition-colors">Reservar Cita</button></li>
+                <li><Link href="/nosotros" className="hover:text-foreground transition-colors">Nosotros</Link></li>
+                <li><a href="https://www.instagram.com/puffscent" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a></li>
               </ul>
             </div>
           </div>
@@ -319,9 +340,7 @@ export default function PerfumeLandingPage() {
               © 2025 Puffscent. Todos los derechos reservados.
             </p>
             <div className="flex gap-6 text-xs text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors">Instagram</a>
-              <a href="#" className="hover:text-foreground transition-colors">Facebook</a>
-              <a href="#" className="hover:text-foreground transition-colors">Pinterest</a>
+              <a href="https://www.instagram.com/puffscent" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Instagram</a>
             </div>
           </div>
         </div>
