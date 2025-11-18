@@ -3,6 +3,7 @@ import { Geist, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { CartProvider } from '@/lib/cart-context'
 import './globals.css'
+import SiteTitle from '@/components/ui/site-title'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _playfairDisplay = Playfair_Display({ subsets: ["latin"] });
@@ -38,6 +39,9 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`font-sans antialiased`}>
+        <div className="fixed top-4 left-4 z-50 pointer-events-auto">
+          <SiteTitle />
+        </div>
         <CartProvider>
           {children}
         </CartProvider>

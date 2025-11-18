@@ -36,14 +36,17 @@ export default function VapesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="font-serif text-5xl md:text-6xl mb-4 text-foreground">
-            Catálogo de Vapes
-          </h1>
+        <div className="mb-12">
+
+          <div className="text-center">
+            <h1 className="font-serif text-5xl md:text-6xl mb-4 text-foreground">
+              Catálogo de Vapes
+            </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Explora nuestra selección de vapes con los mejores sabores y duraciones
           </p>
         </div>
+      </div>  
 
         {/* Filtros por puffs */}
         <div className="flex justify-center gap-4 mb-12 flex-wrap">

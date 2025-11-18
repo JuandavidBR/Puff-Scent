@@ -53,14 +53,17 @@ export default function PerfumesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="font-serif text-5xl md:text-6xl mb-4 text-foreground">
-            Catálogo de Perfumes
-          </h1>
+        <div className="mb-12">
+          
+          <div className="text-center">
+            <h1 className="font-serif text-5xl md:text-6xl mb-4 text-foreground">
+              Catálogo de Perfumes
+            </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Descubre nuestra exclusiva colección de fragancias de las mejores marcas del mundo
           </p>
         </div>
+      </div>
 
         {/* Filtros de género */}
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
