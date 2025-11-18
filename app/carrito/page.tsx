@@ -5,9 +5,33 @@ import { Card } from '@/components/ui/card'
 import { useCart } from '@/lib/cart-context'
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function CarritoPage() {
+  const [mounted, setMounted] = useState(false)
   const { items, removeFromCart, updateQuantity, getTotalPrice } = useCart()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-24">
+        <div className="container mx-auto px-4 py-16">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="animate-pulse">
+              <div className="h-12 bg-secondary/30 rounded w-64 mx-auto mb-8"></div>
+              <div className="space-y-4">
+                <div className="h-32 bg-secondary/30 rounded"></div>
+                <div className="h-32 bg-secondary/30 rounded"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   const subtotal = getTotalPrice()
   const impuestos = subtotal * 0.16
@@ -15,12 +39,10 @@ export default function CarritoPage() {
 
   const handleCheckout = () => {
     const itemsList = items.map(item => 
-      `${item.name} x${item.quantity} - $${item.price * item.quantity}`
-    ).join('\n')
+      `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
+    ).join('%0A')
     
-    const message = encodeURIComponent(
-      `Hola! Me gustaría hacer un pedido:\n\n${itemsList}\n\nTotal: $${total.toFixed(2)}`
-    )
+    const message = `Hola! Me gustaría hacer un pedido:%0A%0A${itemsList}%0A%0ATotal: $${total.toFixed(2)}`
     
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
@@ -53,14 +75,13 @@ export default function CarritoPage() {
         <h1 className="font-serif text-4xl md:text-5xl mb-8 text-center">Tu Carrito</h1>
         
         <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Lista de productos */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => (
               <Card key={item.id} className="p-4">
                 <div className="flex gap-4">
                   <div className="w-24 h-24 bg-secondary/30 rounded overflow-hidden flex-shrink-0">
                     <img
-                      src={item.image || "/placeholder.svg"}
+                      src={item.image || "/placeholder.svg?height=96&width=96"}
                       alt={item.name}
                       className="w-full h-full object-cover"
                     />
@@ -110,7 +131,6 @@ export default function CarritoPage() {
             ))}
           </div>
 
-          {/* Resumen del pedido */}
           <div className="lg:col-span-1">
             <Card className="p-6 sticky top-24">
               <h2 className="font-serif text-2xl mb-6">Resumen del Pedido</h2>

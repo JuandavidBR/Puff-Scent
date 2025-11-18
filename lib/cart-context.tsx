@@ -13,31 +13,39 @@ export interface CartItem {
 
 interface CartContextType {
   items: CartItem[]
-  addItem: (item: Omit<CartItem, 'quantity'>) => void
-  removeItem: (id: string) => void
+  addToCart: (item: Omit<CartItem, 'quantity'>) => void
+  removeFromCart: (id: string) => void
   updateQuantity: (id: string, quantity: number) => void
   clearCart: () => void
-  totalItems: number
-  totalPrice: number
+  getTotalItems: () => number
+  getTotalPrice: () => number
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const saved = localStorage.getItem('puffscent-cart')
     if (saved) {
-      setItems(JSON.parse(saved))
+      try {
+        setItems(JSON.parse(saved))
+      } catch (e) {
+        console.error('Error loading cart:', e)
+      }
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('puffscent-cart', JSON.stringify(items))
-  }, [items])
+    if (mounted) {
+      localStorage.setItem('puffscent-cart', JSON.stringify(items))
+    }
+  }, [items, mounted])
 
-  const addItem = (item: Omit<CartItem, 'quantity'>) => {
+  const addToCart = (item: Omit<CartItem, 'quantity'>) => {
     setItems(current => {
       const existing = current.find(i => i.id === item.id)
       if (existing) {
@@ -49,13 +57,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
     })
   }
 
-  const removeItem = (id: string) => {
+  const removeFromCart = (id: string) => {
     setItems(current => current.filter(i => i.id !== id))
   }
 
   const updateQuantity = (id: string, quantity: number) => {
     if (quantity <= 0) {
-      removeItem(id)
+      removeFromCart(id)
       return
     }
     setItems(current => 
@@ -67,18 +75,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems([])
   }
 
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0)
-  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const getTotalItems = () => items.reduce((sum, item) => sum + item.quantity, 0)
+  const getTotalPrice = () => items.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   return (
     <CartContext.Provider value={{
       items,
-      addItem,
-      removeItem,
+      addToCart,
+      removeFromCart,
       updateQuantity,
       clearCart,
-      totalItems,
-      totalPrice
+      getTotalItems,
+      getTotalPrice
     }}>
       {children}
     </CartContext.Provider>
