@@ -24,10 +24,10 @@ export default function WaxPage() {
 
           <div className="text-center">
             <h1 className="font-serif text-5xl md:text-6xl mb-4 text-foreground">
-              Wax Aromático
+              Wax 
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Transforma tu espacio con nuestras ceras aromáticas de alta calidad
+              Relajate y emprende tu viaje con nuestros Wax
             </p>
           </div>
         </div>

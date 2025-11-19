@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Award, Heart, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { CartIcon } from '@/components/cart-icon'
+import { Menu, Instagram } from 'lucide-react'
 
 export default function NosotrosPage() {
   const [isSmiling, setIsSmiling] = useState(false)
@@ -11,39 +13,56 @@ export default function NosotrosPage() {
   const handleImageClick = () => {
     setIsSmiling(!isSmiling)
   }
+  const handleReservarCita = () => {
+    window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
+  }
 
   return (
-    <div className="min-h-screen bg-background">
+<div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-1 h-8 bg-foreground" />
-              <h1 className="font-serif text-xl tracking-tight text-foreground">
-                PUFFSCENT
-              </h1>
-            </Link>
-          </div>
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-1 h-8 bg-foreground" />
+            <h1 className="font-serif text-xl tracking-tight text-foreground">
+              PUFF&SCENT
+            </h1>
+          </Link>
           
           <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
-            <Link href="/#shop" className="text-foreground hover:text-accent transition-colors uppercase">
-              Tienda
+            <Link href="/perfumes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Perfumes
             </Link>
-            <Link href="/#collections" className="text-foreground hover:text-accent transition-colors uppercase">
-              Colecciones
+            <Link href="/vapes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Vapes
             </Link>
-            <Link href="/nosotros" className="text-foreground hover:text-accent transition-colors uppercase">
-              Nosotros
+            <Link href="/wax" className="text-foreground hover:text-accent transition-colors uppercase">
+              Wax
             </Link>
           </nav>
 
-          <Button className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90">
-            Reservar Cita
-          </Button>
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://www.instagram.com/puffscent" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-accent transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <CartIcon />
+            <button className="md:hidden text-foreground">
+              <Menu className="w-5 h-5" />
+            </button>
+            <Button 
+              onClick={handleReservarCita}
+              className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Contactanos
+            </Button>
+          </div>
         </div>
       </header>
-
       {/* Hero Section */}
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-6">

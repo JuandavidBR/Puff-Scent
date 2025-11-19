@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { perfumesData } from '@/lib/perfumes-data'
+import { CartIcon } from '@/components/cart-icon'
+import { Menu, Instagram } from 'lucide-react'
+import Link from 'next/link'
 
 export default function PerfumesPage() {
   const [selectedGender, setSelectedGender] = useState<'all' | 'Hombre' | 'Mujer' | 'Unisex'>('all')
@@ -48,6 +51,9 @@ export default function PerfumesPage() {
   const handleBuyNow = (perfume: typeof perfumesData[0]) => {
     const message = `Hola! Estoy interesado en comprar:%0A%0A${perfume.brand} - ${perfume.name}%0APrecio: $${perfume.price}%0A%0A¿Está disponible?`
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
+  }
+  const handleReservarCita = () => {
+    window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
   }
 
   return (

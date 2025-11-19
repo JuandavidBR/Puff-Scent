@@ -29,7 +29,7 @@ export default function PerfumeLandingPage() {
           <Link href="/" className="flex items-center gap-2">
             <div className="w-1 h-8 bg-foreground" />
             <h1 className="font-serif text-xl tracking-tight text-foreground">
-              PUFFSCENT
+              PUFF&SCENT
             </h1>
           </Link>
           
@@ -65,7 +65,7 @@ export default function PerfumeLandingPage() {
               onClick={handleReservarCita}
               className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              Reservar Cita
+              Contactanos
             </Button>
           </div>
         </div>
