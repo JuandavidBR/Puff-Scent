@@ -1,126 +1,69 @@
-[00:00:01.957] Server  WARN     ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 5.0.2
-[00:00:02.498] Server  LOG      ✓ Ready in 1578ms
-[00:00:10.689] Server  LOG      ○ Compiling / ...
-[00:00:12.584] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:12.842] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:12.842] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:12.842] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532277563}
-[00:00:33.415] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532298137}
-[00:00:37.452] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532302058}
-[00:00:41.309] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532305657}
-[00:00:45.893] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532310607}
-[00:00:50.922] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532315473}
-[00:00:55.043] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532319765}
-[00:00:56.975] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/nosotros color: rgb(120, 120, 120) color: inherit {"dp":"/nosotros","o":"http://localhost:3000/nosotros","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532321699}
-[00:01:05.768] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532330333}
-[00:08:18.491] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532763200}
-[00:08:20.194] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532764677}
-[00:08:23.488] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532768030}
-[00:08:25.084] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532769482}
-[00:08:25.808] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532770535}
-[00:08:27.413] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532771961}
-[00:08:28.899] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532773623}
-[00:08:30.918] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/wax color: rgb(120, 120, 120) color: inherit {"dp":"/wax","o":"http://localhost:3000/wax","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532775618}
-[00:08:55.402] Server  LOG      ✓ Compiled in 160ms
-[00:09:02.426] Server  LOG      ✓ Compiled in 152ms
-[00:09:05.992] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/nosotros color: rgb(120, 120, 120) color: inherit {"dp":"/nosotros","o":"http://localhost:3000/nosotros","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532810716}
-[00:09:14.064] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/wax color: rgb(120, 120, 120) color: inherit {"dp":"/wax","o":"http://localhost:3000/wax","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532818567}
-[00:09:22.687] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532827316}
-[00:09:24.506] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532829125}
-[00:09:25.360] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/nosotros color: rgb(120, 120, 120) color: inherit {"dp":"/nosotros","o":"http://localhost:3000/nosotros","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532830073}
-[00:09:26.667] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/wax color: rgb(120, 120, 120) color: inherit {"dp":"/wax","o":"http://localhost:3000/wax","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532831176}
-[00:09:59.661] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532864332}
-[00:10:38.579] Server  LOG      ✓ Compiled in 161ms
-[00:10:39.855] Server  LOG      ✓ Compiled in 224ms
-[00:10:40.220] Browser ERROR   ./app/perfumes/page.tsx:204:1
+[00:00:02.544] Server  WARN     ⚠ Minimum recommended TypeScript version is v5.1.0, older versions can potentially be incompatible with Next.js. Detected: 5.0.2
+[00:00:03.344] Server  LOG      ✓ Ready in 2.5s
+[00:00:07.659] Server  LOG      ○ Compiling /vapes ...
+[00:00:12.965] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:13.244] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:13.244] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/vapes","route":"/vapes"}
+[00:00:13.244] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763535872551}
+[00:00:16.533] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:16.800] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:16.800] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/perfumes","route":"/perfumes"}
+[00:00:16.800] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763535875883}
+[00:01:43.480] Browser LOG     URL de Cloudinary: https://res.cloudinary.com/da3asrayi/image/upload/v1763535957/puff-scent/hb6bncqh4me1htm7443c.pdf
+[00:02:32.880] Browser LOG     URL de Cloudinary: https://res.cloudinary.com/da3asrayi/image/upload/v1763536007/puff-scent/gsxjl2mbqovnexpcnlje.jpg
+[00:02:42.448] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:42.533] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:42.533] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/perfumes","route":"/perfumes"}
+[00:02:42.533] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763536021812}
+[00:02:46.879] Browser LOG     URL de Cloudinary: https://res.cloudinary.com/da3asrayi/image/upload/v1763536021/puff-scent/uatpfhd11qvt3kc653eh.jpg
+[00:06:56.724] Server  LOG      ✓ Compiled in 190ms
+[00:07:25.465] Server  LOG      ✓ Compiled in 151ms
+[00:07:31.307] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:31.661] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:31.661] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/perfumes","route":"/perfumes"}
+[00:07:31.661] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763536310832}
+[00:08:31.304] Server  LOG      ✓ Compiled in 307ms
+[00:08:31.623] Browser ERROR   ./lib/perfumes-data.ts:26:3
 Parsing ecmascript source code failed
-  202 |     </div>
-  203 |   )
-> 204 | }
-      | ^
-  205 |
+  24 | }
+  25 |
+> 26 |   { id: 'ab-2', name: 'Her Secret Flame', brand: 'Antonio Banderas', price: 42, image: '/antonio-banderas-perfume-red-bottle.jpg', gender: 'Mujer', notes: 'Rosa, Vainilla, Pachulí', description: 'Sensual y femenina' },
+     |   ^
+  27 |   { id: 'ab-3', name: 'Power of Seduction', brand: 'Antonio Banderas', price: 40, image: '/antonio-banderas-perfume-black-bottle.jpg', gender: 'Hombre', notes: 'Cardamomo, Madera, Almizcle', description: 'Poder y seducción' },
+  28 |   { id: 'ab-4', name: 'Her Secret Temptation', brand: 'Antonio Banderas', price: 42, image: '/antonio-banderas-perfume-purple-bottle.jpg', gender: 'Mujer', notes: 'Frambuesa, Vainilla, Sándalo', description: 'Tentación irresistible' },
+  29 |   { id: 'ab-5', name: 'King of Seduction Absolute', brand: 'Antonio Banderas', price: 50, image: '/antonio-banderas-absolute-perfume.jpg', gender: 'Hombre', notes: 'Bergamota, Ámbar, Cuero', description: 'La versión más intensa' },
 
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+Expected ',', got '{'
 
 Import traces:
   Client Component Browser:
+    ./lib/perfumes-data.ts [Client Component Browser]
     ./app/perfumes/page.tsx [Client Component Browser]
     ./app/perfumes/page.tsx [Server Component]
 
   Client Component SSR:
+    ./lib/perfumes-data.ts [Client Component SSR]
     ./app/perfumes/page.tsx [Client Component SSR]
     ./app/perfumes/page.tsx [Server Component]
-[00:10:50.223] Browser ERROR   ./app/perfumes/page.tsx:205:1
+[00:08:34.626] Browser ERROR   ./lib/perfumes-data.ts:26:3
 Parsing ecmascript source code failed
-  203 |     
-  204 |   )
-> 205 | }
-      | ^
-  206 |
+  24 | }
+  25 |
+> 26 |   { id: 'ab-2', name: 'Her Secret Flame', brand: 'Antonio Banderas', price: 42, image: '/antonio-banderas-perfume-red-bottle.jpg', gender: 'Mujer', notes: 'Rosa, Vainilla, Pachulí', description: 'Sensual y femenina' },
+     |   ^
+  27 |   { id: 'ab-3', name: 'Power of Seduction', brand: 'Antonio Banderas', price: 40, image: '/antonio-banderas-perfume-black-bottle.jpg', gender: 'Hombre', notes: 'Cardamomo, Madera, Almizcle', description: 'Poder y seducción' },
+  28 |   { id: 'ab-4', name: 'Her Secret Temptation', brand: 'Antonio Banderas', price: 42, image: '/antonio-banderas-perfume-purple-bottle.jpg', gender: 'Mujer', notes: 'Frambuesa, Vainilla, Sándalo', description: 'Tentación irresistible' },
+  29 |   { id: 'ab-5', name: 'King of Seduction Absolute', brand: 'Antonio Banderas', price: 50, image: '/antonio-banderas-absolute-perfume.jpg', gender: 'Hombre', notes: 'Bergamota, Ámbar, Cuero', description: 'La versión más intensa' },
 
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+Expected ',', got '{'
 
 Import traces:
   Client Component Browser:
+    ./lib/perfumes-data.ts [Client Component Browser]
     ./app/perfumes/page.tsx [Client Component Browser]
     ./app/perfumes/page.tsx [Server Component]
 
   Client Component SSR:
+    ./lib/perfumes-data.ts [Client Component SSR]
     ./app/perfumes/page.tsx [Client Component SSR]
     ./app/perfumes/page.tsx [Server Component]
-[00:11:03.059] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532927776}
-[00:11:05.887] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532930398}
-[00:11:22.644] Server  LOG      ✓ Compiled in 186ms
-[00:11:25.549] Server  LOG      ✓ Compiled in 167ms
-[00:11:31.202] Server  LOG      ✓ Compiled in 172ms
-[00:11:37.546] Server  LOG      ✓ Compiled in 155ms
-[00:11:45.144] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763532969686}
-[00:12:05.028] Server  LOG      ✓ Compiled in 169ms
-[00:12:20.338] Server  LOG      ✓ Compiled in 218ms
-[00:12:22.517] Server  LOG      ✓ Compiled in 159ms
-[00:12:25.845] Server  LOG      ✓ Compiled in 193ms
-[00:12:35.306] Server  LOG      ✓ Compiled in 188ms
-[00:12:38.772] Server  LOG      ✓ Compiled in 252ms
-[00:12:52.568] Server  LOG      ✓ Compiled in 179ms
-[00:12:53.213] Browser ERROR   ./app/vapes/page.tsx:204:1
-Parsing ecmascript source code failed
-  202 |     </div>
-  203 |   )
-> 204 | }
-      | ^
-  205 |
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./app/vapes/page.tsx [Client Component Browser]
-    ./app/vapes/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/vapes/page.tsx [Client Component SSR]
-    ./app/vapes/page.tsx [Server Component]
-[00:13:01.218] Browser ERROR   ./app/vapes/page.tsx:205:1
-Parsing ecmascript source code failed
-  203 |   
-  204 |   )
-> 205 | }
-      | ^
-  206 |
-
-Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
-
-Import traces:
-  Client Component Browser:
-    ./app/vapes/page.tsx [Client Component Browser]
-    ./app/vapes/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./app/vapes/page.tsx [Client Component SSR]
-    ./app/vapes/page.tsx [Server Component]
-[00:13:17.672] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763533062391}
-[00:13:27.399] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/perfumes color: rgb(120, 120, 120) color: inherit {"dp":"/perfumes","o":"http://localhost:3000/perfumes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763533071876}
-[00:13:31.115] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/nosotros color: rgb(120, 120, 120) color: inherit {"dp":"/nosotros","o":"http://localhost:3000/nosotros","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763533075835}
-[00:13:35.082] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/vapes color: rgb(120, 120, 120) color: inherit {"dp":"/vapes","o":"http://localhost:3000/vapes","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1763533079614}
-[00:13:48.783] Server  LOG      ✓ Compiled in 168ms
-[00:13:53.463] Server  LOG      ✓ Compiled in 185ms

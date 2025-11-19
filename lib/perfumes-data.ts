@@ -10,8 +10,19 @@ export interface Perfume {
 }
 
 export const perfumesData: Perfume[] = [
+
   // Antonio Banderas
-  { id: 'ab-1', name: 'King of Seduction', brand: 'Antonio Banderas', price: 45, image: '/antonio-banderas-king-perfume.jpg', gender: 'Hombre', notes: 'Bergamota, Lavanda, Ámbar', description: 'Fragancia masculina seductora' },
+{
+  id: 'ab-1',
+  name: 'King of Seduction',
+  brand: 'Antonio Banderas',
+  price: 45,
+  image: 'https://res.cloudinary.com/da3asrayi/image/upload/puff-scent/uatpfhd11qvt3kc653eh',
+  gender: 'Hombre',
+  notes: 'Bergamota, Lavanda, Ámbar',
+  description: 'Fragancia masculina seductora'
+},
+
   { id: 'ab-2', name: 'Her Secret Flame', brand: 'Antonio Banderas', price: 42, image: '/antonio-banderas-perfume-red-bottle.jpg', gender: 'Mujer', notes: 'Rosa, Vainilla, Pachulí', description: 'Sensual y femenina' },
   { id: 'ab-3', name: 'Power of Seduction', brand: 'Antonio Banderas', price: 40, image: '/antonio-banderas-perfume-black-bottle.jpg', gender: 'Hombre', notes: 'Cardamomo, Madera, Almizcle', description: 'Poder y seducción' },
   { id: 'ab-4', name: 'Her Secret Temptation', brand: 'Antonio Banderas', price: 42, image: '/antonio-banderas-perfume-purple-bottle.jpg', gender: 'Mujer', notes: 'Frambuesa, Vainilla, Sándalo', description: 'Tentación irresistible' },
