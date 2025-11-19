@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { waxData } from '@/lib/wax-data'
+import { CartIcon } from '@/components/cart-icon'
+import { Menu, Instagram } from 'lucide-react'
+import Link from 'next/link'
 
 export default function WaxPage() {
   const [selectedType, setSelectedType] = useState<'all' | 'Vela' | 'Difusor' | 'Wax Melt'>('all')
@@ -16,8 +19,57 @@ export default function WaxPage() {
     const message = `Hola! Estoy interesado en comprar:%0A%0A${wax.name}%0AAroma: ${wax.scent}%0ADuración: ${wax.duration}%0APrecio: $${wax.price}%0A%0A¿Está disponible?`
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
+  const handleReservarCita = () => {
+    window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
+  }
 
   return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-1 h-8 bg-foreground" />
+            <h1 className="font-serif text-xl tracking-tight text-foreground">
+              PUFF&SCENT
+            </h1>
+          </Link>
+          
+          <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
+            <Link href="/perfumes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Perfumes
+            </Link>
+            <Link href="/vapes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Vapes
+            </Link>
+            <Link href="/nosotros" className="text-foreground hover:text-accent transition-colors uppercase">
+              Nosotros
+            </Link>
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://www.instagram.com/puffscent" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-accent transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <CartIcon />
+            <button className="md:hidden text-foreground">
+              <Menu className="w-5 h-5" />
+            </button>
+            <Button 
+              onClick={handleReservarCita}
+              className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Contactanos
+            </Button>
+          </div>
+        </div>
+      </header>
+
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 py-16">
         <div className="mb-12">
@@ -95,5 +147,6 @@ export default function WaxPage() {
         </div>
       </div>
     </div>
+  </div>  
   )
 }

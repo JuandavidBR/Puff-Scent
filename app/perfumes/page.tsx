@@ -18,6 +18,7 @@ export default function PerfumesPage() {
   const handleSpray = (e: React.MouseEvent, perfume: typeof perfumesData[0]) => {
     const card = e.currentTarget
     const rect = card.getBoundingClientRect()
+
     
     // Crear partículas de spray
     for (let i = 0; i < 15; i++) {
@@ -57,6 +58,52 @@ export default function PerfumesPage() {
   }
 
   return (
+        <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-1 h-8 bg-foreground" />
+            <h1 className="font-serif text-xl tracking-tight text-foreground">
+              PUFF&SCENT
+            </h1>
+          </Link>
+          
+          <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
+            <Link href="/vapes" className="text-foreground hover:text-accent transition-colors uppercase">
+              Vapes
+            </Link>
+            <Link href="/wax" className="text-foreground hover:text-accent transition-colors uppercase">
+              Wax
+            </Link>
+            <Link href="/nosotros" className="text-foreground hover:text-accent transition-colors uppercase">
+              Nosotros
+            </Link>
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <a 
+              href="https://www.instagram.com/puffscent" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-accent transition-colors"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+            <CartIcon />
+            <button className="md:hidden text-foreground">
+              <Menu className="w-5 h-5" />
+            </button>
+            <Button 
+              onClick={handleReservarCita}
+              className="hidden md:inline-flex bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Contactanos
+            </Button>
+          </div>
+        </div>
+      </header>
+
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 py-16">
         <div className="mb-12">
@@ -154,5 +201,6 @@ export default function PerfumesPage() {
         )}
       </div>
     </div>
+  </div>  
   )
 }
