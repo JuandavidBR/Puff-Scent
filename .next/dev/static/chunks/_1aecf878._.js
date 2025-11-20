@@ -91,7 +91,7 @@ function CartProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/lib/cart-context.tsx",
-        lineNumber: 82,
+        lineNumber: 83,
         columnNumber: 5
     }, this);
 }

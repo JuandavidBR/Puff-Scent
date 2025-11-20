@@ -6,6 +6,7 @@ export interface Wax {
   price: number
   image: string
   type: 'Vela' | 'Difusor' | 'Wax Melt'
+  size?: string
   description: string
 }
 

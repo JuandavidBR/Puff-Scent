@@ -123,3 +123,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Cart badge animation */
+.cart-badge {
+  transition: transform 160ms cubic-bezier(.2,.9,.2,1), box-shadow 160ms;
+  transform-origin: center;
+}
+.cart-badge-pop {
+  animation: cart-pop 320ms ease;
+}
+
+@keyframes cart-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35); }
+  65% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}

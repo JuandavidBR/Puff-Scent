@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { vapesData } from '@/lib/vapes-data'
 import { CartIcon } from '@/components/cart-icon'
+import { useCart } from '@/lib/cart-context'
 import { Menu, Instagram } from 'lucide-react'
 import Link from 'next/link'
 
@@ -38,6 +39,7 @@ export default function VapesPage() {
 const handleReservarCita = () => {
     window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
   }
+  const { addToCart } = useCart()
   return (
         <div className="min-h-screen bg-background">
       {/* Header */}
@@ -187,14 +189,18 @@ const handleReservarCita = () => {
                 <div className="mb-3">
                   <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
                 </div>
+                {vape.size && (
+                  <p className="text-sm text-muted-foreground mb-2">{vape.size}</p>
+                )}
                 <Button 
                   className="w-full"
                   onClick={(e) => {
                     e.stopPropagation()
-                    handleBuyNow(vape)
+                    addToCart({ id: vape.id, name: vape.name, price: vape.price, image: vape.image || '/placeholder.svg', type: 'vape', size: vape.size })
+                    import('sonner').then(m => m.toast.success('Añadido al carrito'))
                   }}
                 >
-                  Comprar
+                  Añadir al carrito
                 </Button>
               </div>
             </Card>

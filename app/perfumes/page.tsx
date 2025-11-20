@@ -5,9 +5,9 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { perfumesData } from '@/lib/perfumes-data'
 import { CartIcon } from '@/components/cart-icon'
+import { useCart } from '@/lib/cart-context'
 import { Menu, Instagram } from 'lucide-react'
 import Link from 'next/link'
-import { ImageUploader } from "@/components/image-uploader";
 
 export default function PerfumesPage() {
   const [selectedGender, setSelectedGender] = useState<'all' | 'Hombre' | 'Mujer' | 'Unisex'>('all')
@@ -57,6 +57,7 @@ export default function PerfumesPage() {
   const handleReservarCita = () => {
     window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
   }
+  const { addToCart } = useCart()
 
   return (
         <div className="min-h-screen bg-background">
@@ -117,10 +118,7 @@ export default function PerfumesPage() {
         </p>
       </div>
 
-      {/* 👇 Aquí metemos el uploader, si quieres que esté visible */}
-      <div className="mt-8 flex justify-center">
-        <ImageUploader />
-      </div>
+      {/* Uploader eliminado según solicitud */}
     </div>
       
 
@@ -207,10 +205,13 @@ export default function PerfumesPage() {
                               <div className="p-4">
                                 <p className="text-sm text-muted-foreground mb-1">{perfume.brand}</p>
                                 <h3 className="font-semibold text-lg mb-2 text-balance">{perfume.name}</h3>
+                                {perfume.size && (
+                                  <p className="text-sm text-muted-foreground mb-2">{perfume.size}</p>
+                                )}
                                 <div className="mb-3">
                                   <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
                                 </div>
-                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); handleBuyNow(perfume) }}>Comprar</Button>
+                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); addToCart({ id: perfume.id, name: perfume.name, price: perfume.price, image: perfume.image || '/placeholder.svg', type: 'perfume', size: perfume.size }); import('sonner').then(m => m.toast.success('Añadido al carrito')) }}>Añadir al carrito</Button>
                               </div>
                             </Card>
                           ))}
@@ -246,7 +247,7 @@ export default function PerfumesPage() {
                                 <div className="mb-3">
                                   <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
                                 </div>
-                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); handleBuyNow(perfume) }}>Comprar</Button>
+                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); addToCart({ id: perfume.id, name: perfume.name, price: perfume.price, image: perfume.image || '/placeholder.svg', type: 'perfume' }) }}>Añadir al carrito</Button>
                               </div>
                             </Card>
                           ))}
@@ -282,7 +283,7 @@ export default function PerfumesPage() {
                                 <div className="mb-3">
                                   <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
                                 </div>
-                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); handleBuyNow(perfume) }}>Comprar</Button>
+                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); addToCart({ id: perfume.id, name: perfume.name, price: perfume.price, image: perfume.image || '/placeholder.svg', type: 'perfume' }) }}>Añadir al carrito</Button>
                               </div>
                             </Card>
                           ))}

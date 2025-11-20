@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { waxData } from '@/lib/wax-data'
 import { CartIcon } from '@/components/cart-icon'
+import { useCart } from '@/lib/cart-context'
 import { Menu, Instagram } from 'lucide-react'
 import Link from 'next/link'
 
@@ -22,6 +23,7 @@ export default function WaxPage() {
   const handleReservarCita = () => {
     window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank')
   }
+  const { addToCart } = useCart()
 
   return (
     <div className="min-h-screen bg-background">
@@ -137,11 +139,14 @@ export default function WaxPage() {
                 <div className="mb-3">
                   <Button className="w-full" onClick={() => {}}>Consultar precio</Button>
                 </div>
+                {wax.size && (
+                  <p className="text-sm text-muted-foreground mb-2">{wax.size}</p>
+                )}
                 <Button
                   className="w-full"
-                  onClick={() => handleBuyNow(wax)}
+                  onClick={() => { addToCart({ id: wax.id, name: wax.name, price: wax.price, image: wax.image || '/placeholder.svg', type: 'wax', size: wax.size }); import('sonner').then(m => m.toast.success('Añadido al carrito')) }}
                 >
-                  Comprar
+                  Añadir al carrito
                 </Button>
               </div>
             </Card>

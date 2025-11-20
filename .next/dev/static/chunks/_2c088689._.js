@@ -306,15 +306,37 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$bag$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingBag$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shopping-bag.js [app-client] (ecmascript) <export default as ShoppingBag>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/cart-context.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
 ;
 ;
 ;
+;
 function CartIcon() {
     _s();
-    const { totalItems } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
+    const { getTotalItems } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
+    const totalItems = getTotalItems();
+    const [pop, setPop] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const prev = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(totalItems);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "CartIcon.useEffect": ()=>{
+            if (prev.current !== totalItems) {
+                setPop(true);
+                const t = setTimeout({
+                    "CartIcon.useEffect.t": ()=>setPop(false)
+                }["CartIcon.useEffect.t"], 350);
+                prev.current = totalItems;
+                return ({
+                    "CartIcon.useEffect": ()=>clearTimeout(t)
+                })["CartIcon.useEffect"];
+            }
+        }
+    }["CartIcon.useEffect"], [
+        totalItems
+    ]);
+    const display = totalItems > 9 ? '9+' : String(totalItems);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
         href: "/carrito",
         className: "relative text-foreground hover:text-accent transition-colors",
@@ -323,25 +345,25 @@ function CartIcon() {
                 className: "w-5 h-5"
             }, void 0, false, {
                 fileName: "[project]/components/cart-icon.tsx",
-                lineNumber: 12,
+                lineNumber: 27,
                 columnNumber: 7
             }, this),
             totalItems > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                className: "absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium",
-                children: totalItems
+                className: `absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium cart-badge ${pop ? 'cart-badge-pop' : ''}`,
+                children: display
             }, void 0, false, {
                 fileName: "[project]/components/cart-icon.tsx",
-                lineNumber: 14,
+                lineNumber: 29,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/cart-icon.tsx",
-        lineNumber: 11,
+        lineNumber: 26,
         columnNumber: 5
     }, this);
 }
-_s(CartIcon, "A7BuCWZQgAKUOvSh5hIv2MP7JRI=", false, function() {
+_s(CartIcon, "ldWMGRCWvDraC9WkypuTtQKtkWU=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"]
     ];
@@ -366,6 +388,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$wax$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/wax-data.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$cart$2d$icon$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/cart-icon.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/cart-context.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$menu$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/menu.js [app-client] (ecmascript) <export default as Menu>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$instagram$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Instagram$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/instagram.js [app-client] (ecmascript) <export default as Instagram>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
@@ -379,17 +402,19 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function WaxPage() {
     _s();
     const [selectedType, setSelectedType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('all');
     const filteredWax = selectedType === 'all' ? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$wax$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["waxData"] : __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$wax$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["waxData"].filter((w)=>w.type === selectedType);
     const handleBuyNow = (wax)=>{
-        const message = `Hola! Estoy interesado en comprar:%0A%0A${wax.name}%0AAroma: ${wax.scent}%0ADuración: ${wax.duration}%0APrecio: $${wax.price}%0A%0A¿Está disponible?`;
+        const message = `Hola! Estoy interesado en comprar:%0A%0A${wax.name}%0AAroma: ${wax.scent}%0ADuración: ${wax.duration}%0A%0A¿Está disponible?`;
         window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank');
     };
     const handleReservarCita = ()=>{
         window.open('https://www.instagram.com/direct/t/17843825013072961', '_blank');
     };
+    const { addToCart } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-background",
         children: [
@@ -406,7 +431,7 @@ function WaxPage() {
                                     className: "w-1 h-8 bg-foreground"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 32,
+                                    lineNumber: 34,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -414,13 +439,13 @@ function WaxPage() {
                                     children: "PUFF&SCENT"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 33,
+                                    lineNumber: 35,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wax/page.tsx",
-                            lineNumber: 31,
+                            lineNumber: 33,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -432,7 +457,7 @@ function WaxPage() {
                                     children: "Perfumes"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 39,
+                                    lineNumber: 41,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -441,7 +466,7 @@ function WaxPage() {
                                     children: "Vapes"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 42,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -450,13 +475,13 @@ function WaxPage() {
                                     children: "Nosotros"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 45,
+                                    lineNumber: 47,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wax/page.tsx",
-                            lineNumber: 38,
+                            lineNumber: 40,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -471,17 +496,17 @@ function WaxPage() {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wax/page.tsx",
-                                        lineNumber: 57,
+                                        lineNumber: 59,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 51,
+                                    lineNumber: 53,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$cart$2d$icon$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartIcon"], {}, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 59,
+                                    lineNumber: 61,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -490,12 +515,12 @@ function WaxPage() {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wax/page.tsx",
-                                        lineNumber: 61,
+                                        lineNumber: 63,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 60,
+                                    lineNumber: 62,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -504,24 +529,24 @@ function WaxPage() {
                                     children: "Contactanos"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wax/page.tsx",
-                            lineNumber: 50,
+                            lineNumber: 52,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wax/page.tsx",
-                    lineNumber: 30,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wax/page.tsx",
-                lineNumber: 29,
+                lineNumber: 31,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -539,7 +564,7 @@ function WaxPage() {
                                         children: "Wax"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wax/page.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 80,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -547,18 +572,18 @@ function WaxPage() {
                                         children: "Relajate y emprende tu viaje con nuestros Wax"
                                     }, void 0, false, {
                                         fileName: "[project]/app/wax/page.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 83,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/wax/page.tsx",
-                                lineNumber: 77,
+                                lineNumber: 79,
                                 columnNumber: 11
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/wax/page.tsx",
-                            lineNumber: 75,
+                            lineNumber: 77,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -570,7 +595,7 @@ function WaxPage() {
                                     children: "Todos"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 89,
+                                    lineNumber: 91,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -579,7 +604,7 @@ function WaxPage() {
                                     children: "Velas"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 97,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -588,7 +613,7 @@ function WaxPage() {
                                     children: "Difusores"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 101,
+                                    lineNumber: 103,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -597,13 +622,13 @@ function WaxPage() {
                                     children: "Wax Melts"
                                 }, void 0, false, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 109,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/wax/page.tsx",
-                            lineNumber: 88,
+                            lineNumber: 90,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -619,12 +644,12 @@ function WaxPage() {
                                                 className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/wax/page.tsx",
-                                                lineNumber: 123,
+                                                lineNumber: 125,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/wax/page.tsx",
-                                            lineNumber: 122,
+                                            lineNumber: 124,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -635,7 +660,7 @@ function WaxPage() {
                                                     children: wax.type
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wax/page.tsx",
-                                                    lineNumber: 131,
+                                                    lineNumber: 133,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -643,7 +668,7 @@ function WaxPage() {
                                                     children: wax.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wax/page.tsx",
-                                                    lineNumber: 134,
+                                                    lineNumber: 136,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -651,7 +676,7 @@ function WaxPage() {
                                                     children: wax.scent
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wax/page.tsx",
-                                                    lineNumber: 135,
+                                                    lineNumber: 137,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -662,65 +687,92 @@ function WaxPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/wax/page.tsx",
-                                                    lineNumber: 136,
+                                                    lineNumber: 138,
                                                     columnNumber: 17
                                                 }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xl font-bold text-primary mb-3",
-                                                    children: [
-                                                        "$",
-                                                        wax.price
-                                                    ]
-                                                }, void 0, true, {
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "mb-3",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
+                                                        className: "w-full",
+                                                        onClick: ()=>{},
+                                                        children: "Consultar precio"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/wax/page.tsx",
+                                                        lineNumber: 140,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                }, void 0, false, {
                                                     fileName: "[project]/app/wax/page.tsx",
-                                                    lineNumber: 137,
+                                                    lineNumber: 139,
                                                     columnNumber: 17
+                                                }, this),
+                                                wax.size && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                    className: "text-sm text-muted-foreground mb-2",
+                                                    children: wax.size
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/wax/page.tsx",
+                                                    lineNumber: 143,
+                                                    columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                                                     className: "w-full",
-                                                    onClick: ()=>handleBuyNow(wax),
-                                                    children: "Comprar"
+                                                    onClick: ()=>{
+                                                        addToCart({
+                                                            id: wax.id,
+                                                            name: wax.name,
+                                                            price: wax.price,
+                                                            image: wax.image || '/placeholder.svg',
+                                                            type: 'wax',
+                                                            size: wax.size
+                                                        });
+                                                        __turbopack_context__.A("[project]/node_modules/sonner/dist/index.mjs [app-client] (ecmascript, async loader)").then((m)=>m.toast.success('Añadido al carrito'));
+                                                    },
+                                                    children: "Añadir al carrito"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/wax/page.tsx",
-                                                    lineNumber: 138,
+                                                    lineNumber: 145,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/wax/page.tsx",
-                                            lineNumber: 130,
+                                            lineNumber: 132,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, wax.id, true, {
                                     fileName: "[project]/app/wax/page.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 120,
                                     columnNumber: 13
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/wax/page.tsx",
-                            lineNumber: 116,
+                            lineNumber: 118,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/wax/page.tsx",
-                    lineNumber: 74,
+                    lineNumber: 76,
                     columnNumber: 7
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/wax/page.tsx",
-                lineNumber: 73,
+                lineNumber: 75,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/wax/page.tsx",
-        lineNumber: 27,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 }
-_s(WaxPage, "pfIAaWzNIAMqpySpBjQy+ee131Y=");
+_s(WaxPage, "mnrFQJqesCkgfq4mSLO6GTEOEeo=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$cart$2d$context$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"]
+    ];
+});
 _c = WaxPage;
 var _c;
 __turbopack_context__.k.register(_c, "WaxPage");

@@ -6,6 +6,7 @@ export interface Vape {
   price: number
   image: string
   category: 'Mini' | 'Pro' | 'Max' | 'Ultra'
+  size?: string
   description: string
 }
 

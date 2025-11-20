@@ -6,10 +6,11 @@ import { useCart } from '@/lib/cart-context'
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { saveAs } from 'file-saver'
 
 export default function CarritoPage() {
   const [mounted, setMounted] = useState(false)
-  const { items, removeFromCart, updateQuantity, getTotalPrice } = useCart()
+  const { items, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart()
 
   useEffect(() => {
     setMounted(true)
@@ -45,6 +46,33 @@ export default function CarritoPage() {
     const message = `Hola! Me gustaría hacer un pedido:%0A%0A${itemsList}%0A%0A¿Está disponible?`
 
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
+  }
+
+  const generateCartPdf = async () => {
+    if (items.length === 0) return
+    const { jsPDF } = await import('jspdf')
+    const doc = new jsPDF('p', 'pt', 'a4')
+    doc.setFontSize(14)
+    doc.text('Carrito - Puff&Scent', 40, 50)
+    doc.setFontSize(10)
+    let y = 80
+    items.forEach((it, idx) => {
+      const sizeText = it.size ? ` (${it.size})` : ''
+      const line = `${idx + 1}. ${it.name}${sizeText} x${it.quantity}`
+      doc.text(line, 40, y)
+      y += 18
+      if (y > 750) { doc.addPage(); y = 40 }
+    })
+    y += 20
+    doc.text('Precio: consultar', 40, y)
+    doc.text(`Generado: ${new Date().toLocaleString()}`, 40, y + 20)
+    const pdfBlob = doc.output('blob')
+    saveAs(pdfBlob, 'carrito-puffscent.pdf')
+  }
+
+  const handleClearCart = () => {
+    clearCart()
+    import('sonner').then(m => m.toast.success('Carrito vaciado'))
   }
 
   if (items.length === 0) {
@@ -89,6 +117,7 @@ export default function CarritoPage() {
                   
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-lg mb-2 truncate">{item.name}</h3>
+                    {item.size && <p className="text-sm text-muted-foreground mb-2">{item.size}</p>}
                     <div className="mb-3">
                       <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
                     </div>
@@ -117,7 +146,7 @@ export default function CarritoPage() {
                       <Button
                         size="sm"
                         variant="ghost"
-                        onClick={() => removeFromCart(item.id)}
+                        onClick={() => { removeFromCart(item.id); import('sonner').then(m => m.toast('Eliminado del carrito')) }}
                         className="text-destructive hover:text-destructive hover:bg-destructive/10"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -125,9 +154,9 @@ export default function CarritoPage() {
                     </div>
                   </div>
                   
-                  <div className="text-right">
-                    <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
-                  </div>
+                      <div className="text-right">
+                        <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
+                      </div>
                 </div>
               </Card>
             ))}
@@ -151,14 +180,17 @@ export default function CarritoPage() {
                   <Button className="font-bold text-xl text-primary" onClick={() => {}}>Consultar precio</Button>
                 </div>
               </div>
-
-              <Button 
-                className="w-full mb-3" 
-                size="lg"
-                onClick={handleCheckout}
-              >
-                Finalizar Compra
-              </Button>
+              <div className="flex flex-col gap-3">
+                <Button className="w-full" onClick={generateCartPdf}>Descargar PDF del carrito</Button>
+                <Button 
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                  size="lg"
+                  onClick={handleCheckout}
+                >
+                  Enviar solicitud
+                </Button>
+                <Button variant="outline" className="w-full" onClick={handleClearCart}>Vaciar carrito</Button>
+              </div>
               
               <Link href="/perfumes">
                 <Button variant="outline" className="w-full" size="lg">

@@ -9,6 +9,7 @@ export interface CartItem {
   quantity: number
   image: string
   type: 'perfume' | 'vape' | 'wax'
+  size?: string
 }
 
 interface CartContextType {

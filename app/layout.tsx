@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { CartProvider } from '@/lib/cart-context'
+import { Toaster } from 'sonner'
 import './globals.css'
 import SiteTitle from '@/components/ui/site-title'
 
@@ -44,6 +45,7 @@ export default function RootLayout({
         </div>
         <CartProvider>
           {children}
+          <Toaster position="top-right" />
         </CartProvider>
         <Analytics />
       </body>

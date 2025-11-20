@@ -5,6 +5,7 @@ export interface Perfume {
   price: number
   image: string
   gender: 'Hombre' | 'Mujer' | 'Unisex'
+  size?: string
   notes: string
   description: string
 }
