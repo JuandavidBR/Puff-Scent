@@ -39,11 +39,11 @@ export default function CarritoPage() {
 
   const handleCheckout = () => {
     const itemsList = items.map(item => 
-      `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
+      `${item.name} x${item.quantity}`
     ).join('%0A')
-    
-    const message = `Hola! Me gustaría hacer un pedido:%0A%0A${itemsList}%0A%0ATotal: $${total.toFixed(2)}`
-    
+
+    const message = `Hola! Me gustaría hacer un pedido:%0A%0A${itemsList}%0A%0A¿Está disponible?`
+
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
 
@@ -89,7 +89,9 @@ export default function CarritoPage() {
                   
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-lg mb-2 truncate">{item.name}</h3>
-                    <p className="text-primary font-bold mb-3">${item.price}</p>
+                    <div className="mb-3">
+                      <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
+                    </div>
                     
                     <div className="flex items-center gap-3">
                       <div className="flex items-center border rounded">
@@ -124,7 +126,7 @@ export default function CarritoPage() {
                   </div>
                   
                   <div className="text-right">
-                    <p className="font-bold text-lg">${(item.price * item.quantity).toFixed(2)}</p>
+                    <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
                   </div>
                 </div>
               </Card>
@@ -138,15 +140,15 @@ export default function CarritoPage() {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
+                  <Button className="font-medium" onClick={() => {}}>Consultar precio</Button>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Impuestos (16%)</span>
-                  <span className="font-medium">${impuestos.toFixed(2)}</span>
+                  <Button className="font-medium" onClick={() => {}}>Consultar precio</Button>
                 </div>
                 <div className="border-t pt-3 flex justify-between">
                   <span className="font-semibold text-lg">Total</span>
-                  <span className="font-bold text-xl text-primary">${total.toFixed(2)}</span>
+                  <Button className="font-bold text-xl text-primary" onClick={() => {}}>Consultar precio</Button>
                 </div>
               </div>
 

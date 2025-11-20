@@ -32,7 +32,7 @@ export default function VapesPage() {
   }
 
   const handleBuyNow = (vape: typeof vapesData[0]) => {
-    const message = `Hola! Estoy interesado en comprar:%0A%0A${vape.name}%0ASabor: ${vape.flavor}%0APuffs: ${vape.puffs}%0APrecio: $${vape.price}%0A%0A¿Está disponible?`
+    const message = `Hola! Estoy interesado en comprar:%0A%0A${vape.name}%0ASabor: ${vape.flavor}%0APuffs: ${vape.puffs}%0A%0A¿Está disponible?`
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
 const handleReservarCita = () => {
@@ -184,7 +184,9 @@ const handleReservarCita = () => {
                 </span>
                 <h3 className="font-semibold text-lg mb-2">{vape.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{vape.flavor}</p>
-                <p className="text-xl font-bold text-primary mb-3">${vape.price}</p>
+                <div className="mb-3">
+                  <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
+                </div>
                 <Button 
                   className="w-full"
                   onClick={(e) => {

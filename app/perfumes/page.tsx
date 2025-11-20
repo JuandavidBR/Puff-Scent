@@ -51,7 +51,7 @@ export default function PerfumesPage() {
   }
 
   const handleBuyNow = (perfume: typeof perfumesData[0]) => {
-    const message = `Hola! Estoy interesado en comprar:%0A%0A${perfume.brand} - ${perfume.name}%0APrecio: $${perfume.price}%0A%0A¿Está disponible?`
+    const message = `Hola! Estoy interesado en comprar:%0A%0A${perfume.brand} - ${perfume.name}%0A%0A¿Está disponible?`
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
   const handleReservarCita = () => {
@@ -156,55 +156,145 @@ export default function PerfumesPage() {
           </Button>
         </div>
 
-        {/* Grid de perfumes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredPerfumes.map((perfume) => (
-            <Card
-              key={perfume.id}
-              className="group cursor-pointer overflow-hidden border-2 hover:border-primary transition-all duration-300 relative"
-              onClick={(e) => handleSpray(e, perfume)}
-            >
-              <div className="relative aspect-square overflow-hidden bg-secondary/30">
-                <img
-                  src={perfume.image || "/placeholder.svg"}
-                  alt={perfume.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                
-                {/* Overlay con información */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <p className="text-white font-semibold text-sm mb-1">
-                    {perfume.gender}
-                  </p>
-                  <p className="text-white/80 text-xs">
-                    {perfume.notes}
-                  </p>
-                </div>
+        {/* Secciones por marca */}
+        {(() => {
+          const brands = Array.from(new Set(filteredPerfumes.map(p => p.brand)));
+          if (brands.length === 0) {
+            return (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground text-lg">No se encontraron perfumes en esta categoría</p>
               </div>
-              
-              <div className="p-4">
-                <p className="text-sm text-muted-foreground mb-1">{perfume.brand}</p>
-                <h3 className="font-semibold text-lg mb-2 text-balance">{perfume.name}</h3>
-                <p className="text-xl font-bold text-primary mb-3">${perfume.price}</p>
-                <Button 
-                  className="w-full"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    handleBuyNow(perfume)
-                  }}
-                >
-                  Comprar
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
+            )
+          }
 
-        {filteredPerfumes.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">No se encontraron perfumes en esta categoría</p>
-          </div>
-        )}
+          return (
+            <div className="space-y-12">
+              {brands.map((brand) => {
+                const byBrand = filteredPerfumes.filter(p => p.brand === brand)
+                const hombres = byBrand.filter(p => p.gender === 'Hombre')
+                const mujeres = byBrand.filter(p => p.gender === 'Mujer')
+                const unisex = byBrand.filter(p => p.gender === 'Unisex')
+
+                return (
+                  <section key={brand} className="bg-background/50 p-6 rounded-lg border border-border">
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-2xl font-semibold">{brand}</h2>
+                      <p className="text-sm text-muted-foreground">{byBrand.length} fragancias</p>
+                    </div>
+
+                    {/* Hombre */}
+                    {hombres.length > 0 && (
+                      <div className="mb-6">
+                        <h3 className="text-xl font-medium mb-3">Hombre</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                          {hombres.map(perfume => (
+                            <Card
+                              key={perfume.id}
+                              className="group cursor-pointer overflow-hidden border-2 hover:border-primary transition-all duration-300 relative"
+                              onClick={(e) => handleSpray(e, perfume)}
+                            >
+                              <div className="relative aspect-square overflow-hidden bg-secondary/30">
+                                <img
+                                  src={perfume.image || "/placeholder.svg"}
+                                  alt={perfume.name}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                  <p className="text-white font-semibold text-sm mb-1">{perfume.gender}</p>
+                                  <p className="text-white/80 text-xs">{perfume.notes}</p>
+                                </div>
+                              </div>
+                              <div className="p-4">
+                                <p className="text-sm text-muted-foreground mb-1">{perfume.brand}</p>
+                                <h3 className="font-semibold text-lg mb-2 text-balance">{perfume.name}</h3>
+                                <div className="mb-3">
+                                  <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
+                                </div>
+                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); handleBuyNow(perfume) }}>Comprar</Button>
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Mujer */}
+                    {mujeres.length > 0 && (
+                      <div className="mb-6">
+                        <h3 className="text-xl font-medium mb-3">Mujer</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                          {mujeres.map(perfume => (
+                            <Card
+                              key={perfume.id}
+                              className="group cursor-pointer overflow-hidden border-2 hover:border-primary transition-all duration-300 relative"
+                              onClick={(e) => handleSpray(e, perfume)}
+                            >
+                              <div className="relative aspect-square overflow-hidden bg-secondary/30">
+                                <img
+                                  src={perfume.image || "/placeholder.svg"}
+                                  alt={perfume.name}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                  <p className="text-white font-semibold text-sm mb-1">{perfume.gender}</p>
+                                  <p className="text-white/80 text-xs">{perfume.notes}</p>
+                                </div>
+                              </div>
+                              <div className="p-4">
+                                <p className="text-sm text-muted-foreground mb-1">{perfume.brand}</p>
+                                <h3 className="font-semibold text-lg mb-2 text-balance">{perfume.name}</h3>
+                                <div className="mb-3">
+                                  <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
+                                </div>
+                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); handleBuyNow(perfume) }}>Comprar</Button>
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Unisex */}
+                    {unisex.length > 0 && (
+                      <div>
+                        <h3 className="text-xl font-medium mb-3">Unisex</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                          {unisex.map(perfume => (
+                            <Card
+                              key={perfume.id}
+                              className="group cursor-pointer overflow-hidden border-2 hover:border-primary transition-all duration-300 relative"
+                              onClick={(e) => handleSpray(e, perfume)}
+                            >
+                              <div className="relative aspect-square overflow-hidden bg-secondary/30">
+                                <img
+                                  src={perfume.image || "/placeholder.svg"}
+                                  alt={perfume.name}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                  <p className="text-white font-semibold text-sm mb-1">{perfume.gender}</p>
+                                  <p className="text-white/80 text-xs">{perfume.notes}</p>
+                                </div>
+                              </div>
+                              <div className="p-4">
+                                <p className="text-sm text-muted-foreground mb-1">{perfume.brand}</p>
+                                <h3 className="font-semibold text-lg mb-2 text-balance">{perfume.name}</h3>
+                                <div className="mb-3">
+                                  <Button className="w-full" onClick={(e) => { e.stopPropagation(); }}>Consultar precio</Button>
+                                </div>
+                                <Button className="w-full" onClick={(e) => { e.stopPropagation(); handleBuyNow(perfume) }}>Comprar</Button>
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </section>
+                )
+              })}
+            </div>
+          )
+        })()}
       </div>
     </div>
   </div>  

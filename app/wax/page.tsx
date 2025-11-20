@@ -16,7 +16,7 @@ export default function WaxPage() {
     : waxData.filter(w => w.type === selectedType)
 
   const handleBuyNow = (wax: typeof waxData[0]) => {
-    const message = `Hola! Estoy interesado en comprar:%0A%0A${wax.name}%0AAroma: ${wax.scent}%0ADuración: ${wax.duration}%0APrecio: $${wax.price}%0A%0A¿Está disponible?`
+    const message = `Hola! Estoy interesado en comprar:%0A%0A${wax.name}%0AAroma: ${wax.scent}%0ADuración: ${wax.duration}%0A%0A¿Está disponible?`
     window.open(`https://www.instagram.com/direct/t/17843825013072961?text=${message}`, '_blank')
   }
   const handleReservarCita = () => {
@@ -134,7 +134,9 @@ export default function WaxPage() {
                 <h3 className="font-semibold text-lg mb-2">{wax.name}</h3>
                 <p className="text-sm text-muted-foreground mb-3">{wax.scent}</p>
                 <p className="text-sm text-muted-foreground mb-3">Duración: {wax.duration}</p>
-                <p className="text-xl font-bold text-primary mb-3">${wax.price}</p>
+                <div className="mb-3">
+                  <Button className="w-full" onClick={() => {}}>Consultar precio</Button>
+                </div>
                 <Button
                   className="w-full"
                   onClick={() => handleBuyNow(wax)}
