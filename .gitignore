@@ -1,10 +1,2 @@
 # Dependencias
 node_modules/
-
-# Archivos PDF dentro de public
-public/*.pdf
-
-# Configuración adicional recomendable
-.env
-.DS_Store
-dist/
