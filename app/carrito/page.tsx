@@ -35,8 +35,9 @@ export default function CarritoPage() {
   }
 
   const subtotal = getTotalPrice()
-  const impuestos = subtotal * 0.16
-  const total = subtotal + impuestos
+  // data prices are in units representing thousands; scale for CRC display
+  const scaledSubtotal = subtotal * 1000
+  const total = scaledSubtotal
 
   const handleCheckout = () => {
     const itemsList = items.map(item => 
@@ -119,7 +120,11 @@ export default function CarritoPage() {
                     <h3 className="font-semibold text-lg mb-2 truncate">{item.name}</h3>
                     {item.size && <p className="text-sm text-muted-foreground mb-2">{item.size}</p>}
                     <div className="mb-3">
-                      <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
+                      {typeof item.price === 'number' ? (
+                        <p className="text-lg font-semibold">{(item.price * 1000).toLocaleString('es-CR', { style: 'currency', currency: 'CRC' })}</p>
+                      ) : (
+                        <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
+                      )}
                     </div>
                     
                     <div className="flex items-center gap-3">
@@ -155,7 +160,11 @@ export default function CarritoPage() {
                   </div>
                   
                       <div className="text-right">
-                        <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
+                        {typeof item.price === 'number' ? (
+                          <p className="text-lg font-semibold">{(item.price * item.quantity * 1000).toLocaleString('es-CR', { style: 'currency', currency: 'CRC' })}</p>
+                        ) : (
+                          <Button size="sm" className="w-40" onClick={() => {}}>Consultar precio</Button>
+                        )}
                       </div>
                 </div>
               </Card>
@@ -169,15 +178,11 @@ export default function CarritoPage() {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <Button className="font-medium" onClick={() => {}}>Consultar precio</Button>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Impuestos (16%)</span>
-                  <Button className="font-medium" onClick={() => {}}>Consultar precio</Button>
+                  <span className="font-medium">{scaledSubtotal.toLocaleString('es-CR', { style: 'currency', currency: 'CRC' })}</span>
                 </div>
                 <div className="border-t pt-3 flex justify-between">
                   <span className="font-semibold text-lg">Total</span>
-                  <Button className="font-bold text-xl text-primary" onClick={() => {}}>Consultar precio</Button>
+                  <span className="font-bold text-xl text-primary">{total.toLocaleString('es-CR', { style: 'currency', currency: 'CRC' })}</span>
                 </div>
               </div>
               <div className="flex flex-col gap-3">
