@@ -4,7 +4,6 @@ import { Analytics } from '@vercel/analytics/next'
 import { CartProvider } from '@/lib/cart-context'
 import { Toaster } from 'sonner'
 import './globals.css'
-import SiteTitle from '@/components/ui/site-title'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _playfairDisplay = Playfair_Display({ subsets: ["latin"] });
@@ -40,14 +39,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`font-sans antialiased`}>
-        <div className="fixed top-4 left-4 z-50 pointer-events-auto">
-          <SiteTitle />
-        </div>
+        {/* Agrega <HeaderBar /> al inicio de cada página donde desees el header, excepto en carrito */}
         <CartProvider>
           {children}
           <Toaster position="top-right" />
         </CartProvider>
         <Analytics />
+        {process.env.NODE_ENV !== 'production' && (
+          <div suppressHydrationWarning>
+            {typeof window !== 'undefined' && require('@/components/SupabaseStatus').default()}
+          </div>
+        )}
       </body>
     </html>
   )

@@ -1,14 +1,21 @@
-'use client'
+"use client";
 
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { useCart } from '@/lib/cart-context'
-import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react'
-import Link from 'next/link'
+import NavBar from '@/components/nav-bar'
 import { useState, useEffect } from 'react'
+import { useCart } from '@/lib/cart-context'
+import { Card } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { ShoppingBag, Minus, Plus, Trash2 } from 'lucide-react'
+import Link from 'next/link'
 import { saveAs } from 'file-saver'
 
 export default function CarritoPage() {
+    // Reseña modal state
+    const [showReviewModal, setShowReviewModal] = useState(false);
+    const [reviewEmail, setReviewEmail] = useState("");
+    const [reviewRating, setReviewRating] = useState(0);
+    const [reviewComment, setReviewComment] = useState("");
+    const [pdfJustDownloaded, setPdfJustDownloaded] = useState(false);
   const [mounted, setMounted] = useState(false)
   const { items, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart()
 
@@ -29,6 +36,7 @@ export default function CarritoPage() {
               </div>
             </div>
           </div>
+              <NavBar />
         </div>
       </div>
     )
@@ -69,7 +77,38 @@ export default function CarritoPage() {
     doc.text(`Generado: ${new Date().toLocaleString()}`, 40, y + 20)
     const pdfBlob = doc.output('blob')
     saveAs(pdfBlob, 'carrito-puffscent.pdf')
+    setPdfJustDownloaded(true);
+    setTimeout(() => setShowReviewModal(true), 800);
   }
+  // Guardar reseña en localStorage
+  const handleReviewSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reviewEmail || reviewRating === 0) return;
+    let reviews: any[] = [];
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("puffscent-reviews");
+      reviews = saved ? JSON.parse(saved) : [];
+      const exists = reviews.some(r => r.email === reviewEmail);
+      if (exists) {
+        import('sonner').then(m => m.toast.error('Ya existe una reseña con ese correo.'));
+        return;
+      }
+      const newReview = {
+        email: reviewEmail,
+        rating: reviewRating,
+        comment: reviewComment,
+        date: new Date().toISOString()
+      };
+      reviews.push(newReview);
+      localStorage.setItem("puffscent-reviews", JSON.stringify(reviews));
+    }
+    setShowReviewModal(false);
+    setReviewEmail("");
+    setReviewRating(0);
+    setReviewComment("");
+    setPdfJustDownloaded(false);
+    import('sonner').then(m => m.toast.success('¡Gracias por tu reseña!'));
+  };
 
   const handleClearCart = () => {
     clearCart()
@@ -91,6 +130,7 @@ export default function CarritoPage() {
               <Link href="/vapes">
                 <Button size="lg" variant="outline">Ver Vapes</Button>
               </Link>
+              <NavBar />
             </div>
           </div>
         </div>
@@ -100,6 +140,45 @@ export default function CarritoPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 pt-24">
+      {/* Modal de reseña después de descargar PDF */}
+      {showReviewModal && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+          <div className="bg-background p-8 rounded-xl shadow-lg w-full max-w-md">
+            <h4 className="font-serif text-2xl mb-4 text-center">¿Quieres dejar una reseña sobre la página?</h4>
+            <form onSubmit={handleReviewSubmit} className="flex flex-col gap-4">
+              <input
+                type="email"
+                required
+                className="border rounded p-2 w-full"
+                placeholder="Tu correo electrónico"
+                value={reviewEmail}
+                onChange={e => setReviewEmail(e.target.value)}
+              />
+            <NavBar />
+              <div className="flex items-center justify-center gap-2 mb-2">
+                {[1,2,3,4,5].map((star) => (
+                  <span
+                    key={star}
+                    className={`cursor-pointer text-3xl ${star <= reviewRating ? 'text-yellow-400' : 'text-muted-foreground'}`}
+                    onClick={() => setReviewRating(star)}
+                  >★</span>
+                ))}
+              </div>
+              <textarea
+                className="border rounded p-2 w-full"
+                rows={3}
+                placeholder="¿Qué te pareció la página? (opcional)"
+                value={reviewComment}
+                onChange={e => setReviewComment(e.target.value)}
+              />
+              <div className="flex gap-4 justify-center">
+                <button type="submit" className="bg-primary text-primary-foreground px-4 py-2 rounded">Enviar reseña</button>
+                <button type="button" className="bg-muted px-4 py-2 rounded" onClick={() => setShowReviewModal(false)}>Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
       <div className="container mx-auto px-4 py-16">
         <h1 className="font-serif text-4xl md:text-5xl mb-8 text-center">Tu Carrito</h1>
         
